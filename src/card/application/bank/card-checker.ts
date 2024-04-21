@@ -12,6 +12,7 @@ type ResponseEnum =
 
 export interface CheckerResponse {
   response: ResponseEnum
+  cardToken?: string
 }
 
 export interface CardChecker {
