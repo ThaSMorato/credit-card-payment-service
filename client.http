@@ -1,0 +1,68 @@
+
+# @name create_payment[Success]
+POST http://localhost:3333/payments
+Authorization: ABCDE12345
+Content-Type: application/json
+
+{
+  "cvv": 123,
+  "number": "1235 1255 2564 5542",
+  "value": 15000,
+  "validationDate": "12/35"
+}
+
+###
+
+# @name create_payment[InvalidCard]
+POST http://localhost:3333/payments
+Authorization: ABCDE12345
+Content-Type: application/json
+
+{
+  "cvv": 123,
+  "number": "1111 1111 1111 1111",
+  "value": 15000,
+  "validationDate": "12/35"
+}
+
+###
+
+# @name create_payment[AccessTokenError]
+POST http://localhost:3333/payments
+Authorization: ABCDE123456
+Content-Type: application/json
+
+{
+  "cvv": 123,
+  "number": "6456 6544 4585 5486",
+  "value": 15000,
+  "validationDate": "12/35"
+}
+
+###
+
+# @name create_payment[InsufficientFunds]
+POST http://localhost:3333/payments
+Authorization: ABCDE12345
+Content-Type: application/json
+
+{
+  "cvv": 123,
+  "number": "1234 1234 1234 1234",
+  "value": 15000,
+  "validationDate": "12/35"
+}
+
+###
+
+# @name create_payment[ExpiredCard]
+POST http://localhost:3333/payments
+Authorization: ABCDE12345
+Content-Type: application/json
+
+{
+  "cvv": 123,
+  "number": "1234 1234 1234 4521",
+  "value": 15000,
+  "validationDate": "12/22"
+}
