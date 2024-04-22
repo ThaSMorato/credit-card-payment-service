@@ -4,7 +4,7 @@ export class InvalidCardError extends Error implements UseCaseError {
   public code: number
 
   constructor() {
-    super('User already exists')
+    super('Invalid card.')
     this.code = 400
   }
 }
