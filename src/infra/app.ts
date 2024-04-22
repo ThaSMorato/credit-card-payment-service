@@ -10,13 +10,6 @@ export class App {
     this.app = express()
   }
 
-  createRoutes() {
-    this.app.use(
-      IocHttpContainer.createPaymentRouteInstance.create().expressRouter,
-    )
-    return this
-  }
-
   useConfigs() {
     this.app.use(express.urlencoded({ extended: true }))
     this.app.use(express.json())
@@ -25,8 +18,19 @@ export class App {
     return this
   }
 
+  createRoutes() {
+    this.app.use(
+      IocHttpContainer.createPaymentRouteInstance.create().expressRouter,
+    )
+    return this
+  }
+
   listen(port: number) {
     this.app.listen(port, () => console.log(`App listening on port: ${port}`))
     return this
+  }
+
+  get httpServerInstance() {
+    return this.app
   }
 }

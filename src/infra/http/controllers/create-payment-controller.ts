@@ -40,15 +40,11 @@ export class CreatePaymentController {
 
     const { cardToken } = validateResponse.value
 
-    const paymentResponse = await this.createPaymentUseCase.execute({
+    await this.createPaymentUseCase.execute({
       cardToken,
       value,
     })
 
-    const { payment } = paymentResponse.value
-
-    return res.status(201).send({
-      message: `Payment created at ${payment.createdAt.getUTCDate()}`,
-    })
+    return res.status(201).send()
   }
 }
